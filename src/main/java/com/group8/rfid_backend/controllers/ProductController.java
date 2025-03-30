@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/product/")
+@CrossOrigin(origins = "http://localhost:5173") // Allow only this origin
 public class ProductController {
 
     private final ProductService productService;
@@ -20,12 +21,6 @@ public class ProductController {
 
     @PostMapping("")
     public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
-        Product newProduct = productService.saveProduct(product);
-        return ResponseEntity.ok(newProduct);
-    }
-
-    @PostMapping("")
-    public ResponseEntity<Product> saveProduct2(@RequestBody Product product) {
         Product newProduct = productService.saveProduct(product);
         return ResponseEntity.ok(newProduct);
     }
